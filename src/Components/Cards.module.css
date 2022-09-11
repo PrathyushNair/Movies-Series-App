@@ -2,17 +2,17 @@
   width: 90%;
   margin: auto;
   display: grid;
-  gap: 15px;
+  gap: 25px;
+
   grid-template-columns: repeat(5, 1fr);
 }
 .individual {
   margin: auto;
-  background-color: #544d4f;
+  background-color: #2e2e2e;
   color: aliceblue;
   box-sizing: border-box;
-  padding-top: 20px;
   padding-bottom: 20px;
-  border-radius: 35px;
+  border-radius: 15px;
   cursor: pointer;
 }
 .individual:hover {
@@ -20,7 +20,10 @@
 }
 .individual > div > img {
   width: 100%;
+  
   margin: auto;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 @media all and (min-width: 500px) and (max-width: 900px) {

@@ -6,7 +6,9 @@ import { CustomPagination } from "./Pagination";
 export const Cards = ({ list, setCurrentPage, totalPage }) => {
   return (
     <>
+    
       <div className={style.mainContainer}>
+      
         {list.map((el, index) => (
           <Grid
             className={style.individual}
@@ -15,11 +17,12 @@ export const Cards = ({ list, setCurrentPage, totalPage }) => {
             sm={4}
             md={3}
             key={index}
+           fontSize="18px"
           >
             <div>
               <img
                 alt={el.title || el.name}
-                src={"https://image.tmdb.org/t/p/w300/" + el.poster_path}
+                src={el.poster_path?"https://image.tmdb.org/t/p/w300/" + el.poster_path:"https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"}
               ></img>
             </div>
             <div>{el.title || el.name}</div>

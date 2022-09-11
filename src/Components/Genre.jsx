@@ -2,7 +2,8 @@ import React from "react";
 import axios from "axios";
 import Chip from "@mui/material/Chip";
 import style from "./Genre.module.css"
-export const Genre = ({ type, selectedArr, setSelectedArr }) => {
+import Box from '@mui/material/Box';
+export const Genre = ({ type, selectedArr, setSelectedArr,label }) => {
   let [genreArr, setGenreArr] = React.useState([]);
 
   const handleClick = (el) => {
@@ -23,15 +24,20 @@ export const Genre = ({ type, selectedArr, setSelectedArr }) => {
         setGenreArr(resp.data.genres);
       });
   }, [type]);
-  console.log("selected arr", selectedArr);
+
   return (
-    <div >
-      <div className={style.genreContainer}>
+    <div className={style.genreContainer}>
+      {/* <h1 className={style.heading}>DISCOVER {label}</h1> */}
+      <Box style={{color:"white"}} component="span" sx={{ fontSize:50,fontFamily:'BlinkMacSystemFont'  }}>
+     DISCOVER {label}
+    </Box>
+      <div >
         {genreArr.map((el) => (
           <Chip
             label={el.name}
             variant="outlined"
-            color="success"
+          
+            style={{backgroundColor:"#544d4f",color:"white"}}
             onClick={() => handleClick(el)}
             clickable
           />
@@ -40,9 +46,10 @@ export const Genre = ({ type, selectedArr, setSelectedArr }) => {
       <div className={style.Container}>
         {selectedArr.map((el) => (
           <Chip
+        
             label={el.name}
             variant="outlined"
-            color="success"
+            style={{backgroundColor:"#544d4f",color:"white"}}
             onDelete={() => handleDelete(el)}
           />
         ))}

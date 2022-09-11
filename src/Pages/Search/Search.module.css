@@ -1,0 +1,26 @@
+.searchBarContainer
+{
+    display:flex;
+    width:80%;
+  
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    gap:10px;
+    margin-top: 3%;
+}
+.searchBox
+{
+    width:80%;
+    margin:auto;
+    border:1px solid white;
+    border-radius: 5px;
+    background-color: rgb(255,255,255,0.2);
+   
+}
+.searchButton
+{
+    
+    background-color: rgb(255,255,255,0.2);
+   
+}

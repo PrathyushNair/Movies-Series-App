@@ -11,8 +11,8 @@ export const Movies = () => {
   let [currentPage, setCurrentPage] = React.useState(1);
   let [selectedArr,setSelectedArr]=React.useState([])
   let selectedGenre=useGenre(selectedArr)
-  console.log(process.env.REACT_APP_API_KEY);
-  console.log(currentPage);
+  // console.log(process.env.REACT_APP_API_KEY);
+  // console.log(currentPage);
   React.useEffect(() => {
     console.log("in useEffect")
     axios
@@ -24,12 +24,11 @@ export const Movies = () => {
         setTotalPage(resp.data.total_pages);
       });
   }, [currentPage,selectedGenre]);
- // console.log("movieList", movieList);
-   console.log("selectedgenre in movies", selectedGenre);
+ 
   return (
     <>
-     <h1 style={{width:"40%",margin:"auto",color:"white"}}>DISCOVER MOVIES</h1>
-     <Genre type={"movie"} selectedArr={selectedArr} setSelectedArr={setSelectedArr}/>
+    
+     <Genre label={"MOVIES"}type={"movie"} selectedArr={selectedArr} setSelectedArr={setSelectedArr}/>
      <Cards
       list={movieList}
       setCurrentPage={setCurrentPage}
