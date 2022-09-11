@@ -1,0 +1,45 @@
+.mainContainer {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(5, 1fr);
+}
+.individual {
+  margin: auto;
+  background-color: #544d4f;
+  color: aliceblue;
+  box-sizing: border-box;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 35px;
+  cursor: pointer;
+}
+.individual:hover {
+  border: 2px solid white;
+}
+.individual > div > img {
+  width: 100%;
+  margin: auto;
+}
+
+@media all and (min-width: 500px) and (max-width: 900px) {
+  .mainContainer {
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .individual {
+    font-size: larger;
+  }
+}
+
+@media all and (min-width: 100px) and (max-width: 499px) {
+  .mainContainer {
+    width: 80%;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .individual {
+    font-size: larger;
+  }
+}

@@ -1,0 +1,9 @@
+.genreContainer
+{
+     border:"1px solid white";
+     display: "flex";
+     width: "100%";
+     margin: "auto";
+     justify-content:"center";
+     align-items:"center"
+}

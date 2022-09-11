@@ -1,0 +1,30 @@
+.pageContainer
+{
+    width:30%;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:3%;
+    background-color: aliceblue;
+    border-radius: 25px;
+}
+
+@media all and (min-width: 500px) and (max-width: 900px) {
+    .pageContainer
+{
+    width:50%;
+    border-radius: 15px;
+  
+}
+  }
+  
+  @media all and (min-width: 100px) and (max-width: 499px) {
+    .pageContainer
+    {
+        width:90%;
+        border-radius: 15px;
+      
+    }
+    
+  }
