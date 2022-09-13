@@ -1,40 +1,36 @@
-.genreContainer
-{ margin-bottom: 2%;
-     width: 100%;
+.genreContainer {
+  margin-bottom: 2%;
+  width: 100%;
   
+
 }
-.heading
-{
-     width:50%;
-     margin:auto;
-     color:white;
-    font-family: 'Lato', sans-serif;
-    margin-bottom: 1%; 
+.heading {
+  width: 100%;
+  margin: auto;
+  color: white;
+  font-family: "Lato", sans-serif;
+  margin-bottom: 1%;
+  border: 1px solid white;
 }
-.genreContainer>div:nth-child(2)
-{    
-     display: flex;
-     flex-wrap: wrap;
-       gap:10px;
-     width: 90%;
-     margin: auto;
-     justify-content:center;
-     align-items:center;
-     margin-bottom: 2%;  
+.genreContainer > div:nth-child(2) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 90%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2%;
 }
-/* .container
-{
-     margin-top: 2%; 
-} */
 
 @media all and (min-width: 500px) and (max-width: 900px) {
-     .heading{
-          width:60%;
-     }
-   }
-   
-   @media all and (min-width: 100px) and (max-width: 499px) {
-     .heading{
-          width:80%;
-     }
-   }
+  .heading {
+    width: 60%;
+  }
+}
+
+@media all and (min-width: 100px) and (max-width: 499px) {
+  .heading {
+    width: 80%;
+  }
+}

@@ -8,14 +8,17 @@ import SearchIcon from "@mui/icons-material/Search";
 import style from "./Search.module.css";
 import axios from "axios";
 import { Cards } from "../../Components/Cards";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 export const Search = () => {
-  const [type, setType] = React.useState(0);
-const[text,setText]=React.useState({text:""})
-let[trig,setTrig]=React.useState(false)
-const [searchArr,setSetArr]=React.useState([])
-let [totalPage, setTotalPage] = React.useState();
-let [currentPage, setCurrentPage] = React.useState(1);
-  const theme = createTheme({
+  let [type, setType] = React.useState(0);
+  let [text, setText] = React.useState({ text: "" });
+  let [trig, setTrig] = React.useState(false);
+  let [searchArr, setSetArr] = React.useState([]);
+  let [totalPage, setTotalPage] = React.useState();
+  let [currentPage, setCurrentPage] = React.useState(1);
+  const [open, setOpen] = React.useState(true);
+  let theme = createTheme({
     palette: {
       primary: {
         main: "#fff",
@@ -24,26 +27,45 @@ let [currentPage, setCurrentPage] = React.useState(1);
   });
 
   const handleChange = (event, newValue) => {
-   setType(newValue);
+    setType(newValue);
   };
-const handleSearchChange=(e)=>{
-    setText({...type,[e.target.name]:e.target.value})
-    
-}
+  const handleSearchChange = (e) => {
+    setText({ ...type, [e.target.name]: e.target.value });
+  };
   let handleSearch = () => {
-      setTrig(!trig)
+   
+    setTrig(!trig);
   };
-  React.useEffect(()=>{
-    axios.get(`https://api.themoviedb.org/3/search/${type===1 ? "tv" : "movie"}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${text.text}`)
-      .then((resp)=>{
-        console.log(resp.data.results)
-        setSetArr([...resp.data.results])
+  React.useEffect(() => {
+    setOpen(true)
+    axios
+      .get(
+        `https://api.themoviedb.org/3/search/${
+          type === 1 ? "tv" : "movie"
+        }?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${
+          text.text
+        }`
+      )
+      .then((resp) => {
+        console.log(resp.data.results);
+        setSetArr([...resp.data.results]);
         setTotalPage(resp.data.total_pages);
+        setOpen(false)
       })
-  },[trig,type])
- 
+      .catch((err)=>{
+        setOpen(false)
+      })
+  }, [trig, type]);
+
   return (
     <>
+     <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+      
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <ThemeProvider theme={theme}>
         <div className={style.searchBarContainer}>
           <TextField
@@ -56,20 +78,32 @@ const handleSearchChange=(e)=>{
             variant="filled"
           />
 
-          <IconButton color="primary" aria-label="search button">
-            <SearchIcon onClick={handleSearch} fontSize="large" />
+          <IconButton onClick={handleSearch}color="primary" aria-label="search button">
+            <SearchIcon  fontSize="large" />
           </IconButton>
         </div>
-        <Tabs value={type} onChange={handleChange} indicatorColor="primary" textColor="primary">
-          <Tab color="primary" label="Movies"  />
+        <div style={{marginBottom:"5%"}}className={style.tabs}>
+        <Tabs
+          value={type}
+         
+          onChange={handleChange}
+          indicatorColor="primary"
+        //   textColor="primary"
+        >
+          <Tab color="primary" label="Movies" />
           <Tab color="primary" label="Series" />
         </Tabs>
+        </div>
+       
       </ThemeProvider>
-      {searchArr.length>0? <Cards
-      list={searchArr}
-      setCurrentPage={setCurrentPage}
-      totalPage={totalPage}
-    />:<h1>No data available</h1>}
+      {searchArr.length>0 &&(
+        <Cards
+          list={searchArr}
+          setCurrentPage={setCurrentPage}
+          totalPage={totalPage}
+        />
+      ) 
+      }
     </>
   );
 };

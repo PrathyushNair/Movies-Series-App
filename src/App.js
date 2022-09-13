@@ -6,17 +6,21 @@ import { Series } from './Pages/Series/Series';
 import { Funspace } from './Components/Funspace';
 import { Trending } from './Pages/Trending/Trending';
 import { Search } from './Pages/Search/Search';
+import { Error } from './Pages/Error/Error';
 function App() {
   return (
-    <div className="App">
+  
+      <div className='App'>
       <Funspace/>
      <Routes>
       <Route path="/" element={<Trending/>}></Route>
       <Route path="/movies" element={<Movies/>}></Route>
       <Route path="/series" element={<Series/>}></Route>
       <Route path="/search" element={<Search/>}></Route>
+      <Route path="*" element={<Error/>}></Route>
      </Routes>
-    </div>
+      </div>
+   
   );
 }
 
